@@ -1,0 +1,25 @@
+name: Python CI
+ 
+on:
+  push:
+    branches:
+      - master
+ 
+jobs:
+  test:
+    runs-on: ubuntu-latest
+ 
+    steps:
+      - name: 拉取程式碼
+        uses: actions/checkout@v4
+ 
+      - name: 安裝 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+ 
+      - name: 安裝依賴
+        run: pip install -r requirements.txt
+ 
+      - name: 執行測試
+        run: python -m pytest -v
