@@ -28,5 +28,5 @@ jobs:
     needs: test
     steps: 
       - uses: actions/checkout@v4
-      - run: docker build -t images:latest
+      - run: docker build -t images:latest .
       - run: docker run -d --name app -p 5000:5000 images:latest && sleep 5 && curl http://127.0.0.1:5000/health
