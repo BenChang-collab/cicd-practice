@@ -29,4 +29,8 @@ jobs:
     steps: 
       - uses: actions/checkout@v4
       - run: docker build -t images:latest .
+      - name: 檢查容器狀態與日誌
+      - run: 
+          docker ps -a
+          docker logs app
       - run: docker run -d --name app -p 5000:5000 images:latest && sleep 5 && curl http://127.0.0.1:5000/health
